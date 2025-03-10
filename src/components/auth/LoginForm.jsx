@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { login, resetAuthState } from '../../features/auth/slices/authSlice';
 import Loader from '../common/Loader';
+import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
 
 // Validation schema
 const validationSchema = Yup.object().shape({
@@ -50,12 +51,19 @@ const LoginForm = () => {
   };
 
   return (
-    <Card className="shadow border-0">
-      <Card.Body className="p-4">
+    <Card 
+      className="border-0 rounded-lg overflow-hidden"
+      style={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)' }}
+    >
+      <Card.Body className="p-4 p-md-5">
         <h2 className="text-center mb-4 text-primary">Login to Your Account</h2>
         
         {formError && (
-          <Alert variant="danger" className="mb-4">
+          <Alert 
+            variant="danger" 
+            className="mb-4 rounded-lg border-0"
+            style={{ background: 'rgba(220, 53, 69, 0.1)', color: '#dc3545' }}
+          >
             {formError}
           </Alert>
         )}
@@ -75,35 +83,47 @@ const LoginForm = () => {
             isSubmitting,
           }) => (
             <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
-                <Form.Label className="fw-medium">Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isInvalid={touched.email && errors.email}
-                  placeholder="Enter your email"
-                  className="py-2"
-                />
+              <Form.Group className="mb-4">
+                <Form.Label className="fw-medium text-secondary">Email</Form.Label>
+                <div className="input-group">
+                  <div className="input-group-text bg-light border-end-0 text-secondary">
+                    <FaEnvelope />
+                  </div>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isInvalid={touched.email && errors.email}
+                    placeholder="Enter your email"
+                    className="py-2 border-start-0"
+                    style={{ borderRadius: '0 0.375rem 0.375rem 0' }}
+                  />
+                </div>
                 <Form.Control.Feedback type="invalid">
                   {errors.email}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className="mb-4">
-                <Form.Label className="fw-medium">Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isInvalid={touched.password && errors.password}
-                  placeholder="Enter your password"
-                  className="py-2"
-                />
+                <Form.Label className="fw-medium text-secondary">Password</Form.Label>
+                <div className="input-group">
+                  <div className="input-group-text bg-light border-end-0 text-secondary">
+                    <FaLock />
+                  </div>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isInvalid={touched.password && errors.password}
+                    placeholder="Enter your password"
+                    className="py-2 border-start-0"
+                    style={{ borderRadius: '0 0.375rem 0.375rem 0' }}
+                  />
+                </div>
                 <Form.Control.Feedback type="invalid">
                   {errors.password}
                 </Form.Control.Feedback>
@@ -112,17 +132,31 @@ const LoginForm = () => {
               <Button
                 variant="primary"
                 type="submit"
-                className="w-100 mb-3 py-2 text-white fw-medium"
+                className="w-100 mb-3 py-2 text-white fw-medium rounded-pill d-flex align-items-center justify-content-center"
                 disabled={isSubmitting || isLoading}
-                style={{ backgroundColor: '#0d6efd', borderColor: '#0d6efd' }}
+                style={{ 
+                  background: 'linear-gradient(135deg, #4a6bff 0%, #2948ff 100%)',
+                  border: 'none',
+                  height: '48px'
+                }}
               >
-                {isLoading ? <Loader size="sm" className="mx-auto" /> : 'Login'}
+                {isLoading ? (
+                  <Loader size="sm" className="mx-auto" />
+                ) : (
+                  <>
+                    <FaSignInAlt className="me-2" /> Sign In
+                  </>
+                )}
               </Button>
               
-              <div className="text-center mt-3">
-                <p className="mb-0">
+              <div className="text-center mt-4">
+                <p className="mb-0 text-secondary">
                   Don't have an account?{' '}
-                  <Link to="/register" className="text-decoration-none text-primary fw-medium">
+                  <Link 
+                    to="/register" 
+                    className="text-decoration-none fw-medium"
+                    style={{ color: '#4a6bff' }}
+                  >
                     Register here
                   </Link>
                 </p>
