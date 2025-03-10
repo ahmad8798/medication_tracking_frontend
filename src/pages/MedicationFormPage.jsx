@@ -38,7 +38,15 @@ const MedicationFormPage = () => {
     
     // Doctor can only edit medications they prescribed
     if (user.role === 'doctor') {
-      return medication.prescribedBy?.id === user.id;
+      // Get the prescriber ID, handling both _id and id fields
+      const prescriberId = medication.prescribedBy?._id || medication.prescribedBy?.id;
+      const userId = user._id || user.id;
+      
+      // Convert both to strings for comparison to avoid object reference issues
+      const prescriberIdStr = String(prescriberId);
+      const userIdStr = String(userId);
+      
+      return prescriberIdStr === userIdStr;
     }
     
     return false;
