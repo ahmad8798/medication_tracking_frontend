@@ -87,3 +87,67 @@ main {
   border-color: #0d6efd !important;
   opacity: 0.65;
 }
+
+/* Navbar custom styles */
+.navbar-custom .nav-dropdown-custom .dropdown-toggle::after {
+  color: white;
+}
+
+.navbar-custom .nav-dropdown-custom .dropdown-menu {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.navbar-custom .nav-dropdown-custom .dropdown-item {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.navbar-custom .nav-dropdown-custom .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.navbar-custom .nav-dropdown-custom .dropdown-item.text-danger:hover {
+  background-color: #fff5f5;
+}
+
+/* Card hover effects */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Button hover effects */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar toggle button */
+.navbar-toggler {
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  background-color: transparent !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
