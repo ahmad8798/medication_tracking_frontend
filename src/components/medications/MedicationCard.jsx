@@ -82,7 +82,7 @@ const MedicationCard = ({ medication, currentUser, onLogIntake, onDelete }) => {
           
           {isActive && !isExpired && onLogIntake && (
             <Button 
-              variant="success" 
+              variant="primary" 
               className="w-100"
               onClick={() => onLogIntake(_id)}
             >

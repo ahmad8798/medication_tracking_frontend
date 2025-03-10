@@ -145,8 +145,9 @@ const MedicationDetailPage = () => {
             <Card.Footer>
               {medication.isActive && !isExpired && (
                 <Button 
-                  variant="success" 
+                  variant="primary" 
                   onClick={() => setShowLogForm(true)}
+                  className="d-block"
                 >
                   Log Medication Intake
                 </Button>
